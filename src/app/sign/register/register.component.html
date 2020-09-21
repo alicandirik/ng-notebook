@@ -1,0 +1,128 @@
+<div class="container-fluid h-50">
+
+  <div class="d-flex flex-wrap">
+    <div class="flex-fill w-100 text-center">
+      <img src="assets/logo.png"
+           alt="logo"
+           [width]="256">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-9 mx-auto d-flex flex-wrap z-index-1" [formGroup]="form">
+
+      <div formGroupName="name" class="flex-fill w-100 d-flex flex-wrap">
+        <div class="flex-fill w-50 pr-1">
+          <div class="acd-text-bold"
+               [ngClass]="form.get('name').get('given').errors && form.get('name').get('given').dirty ? 'text-danger' : ''">
+            Given Name *
+          </div>
+
+          <label>
+            <input nz-input
+                   formControlName="given"
+                   [ngClass]="form.get('name').get('given').errors && form.get('name').get('given').dirty ? 'border-danger' : ''">
+          </label>
+        </div>
+        <div class="flex-fill w-50 pl-1">
+          <div class="acd-text-bold"
+               [ngClass]="form.get('name').get('family').errors && form.get('name').get('family').dirty ? 'text-danger' : ''">
+            Family Name *
+          </div>
+
+          <label>
+            <input nz-input
+                   formControlName="family"
+                   [ngClass]="form.get('name').get('family').errors && form.get('name').get('family').dirty ? 'border-danger' : ''">
+          </label>
+        </div>
+      </div>
+
+      <div class="flex-fill w-100 mt-3">
+        <div class="acd-text-bold"
+             [ngClass]="form.get('email').errors && form.get('email').dirty ? 'text-danger' : ''">
+          E-mail *
+        </div>
+
+        <label>
+          <input nz-input
+                 [ngClass]="form.get('email').errors && form.get('email').dirty ? 'border-danger' : ''"
+                 formControlName="email"
+                 type="email">
+        </label>
+      </div>
+
+      <div class="flex-fill w-100 mt-3">
+        <div class="acd-text-bold"
+             [ngClass]="form.get('phone').errors && form.get('phone').dirty ? 'text-danger' : ''">
+          Phone Number *
+        </div>
+
+        <label>
+          <input nz-input
+                 [ngClass]="form.get('phone').errors && form.get('phone').dirty ? 'border-danger' : ''"
+                 formControlName="phone"
+                 type="tel">
+        </label>
+      </div>
+
+      <div class="flex-fill w-50 mt-3 pr-1">
+        <div class="acd-text-bold"
+             [ngClass]="form.get('password').errors && form.get('password').dirty ? 'text-danger' : ''">
+          Password *
+        </div>
+
+        <label>
+          <input nz-input
+                 [ngClass]="form.get('password').errors && form.get('password').dirty ? 'border-danger' : ''"
+                 formControlName="password"
+                 type="password">
+        </label>
+      </div>
+
+      <div class="flex-fill w-50 mt-3 pl-1">
+        <div class="acd-text-bold"
+             [ngClass]="
+             form.get('confirm').dirty &&
+             form.get('password').value !== form.get('confirm').value ? 'text-danger' : ''">
+          Confirm Password *
+        </div>
+
+        <label>
+          <input nz-input
+                 [ngClass]="
+                 form.get('confirm').dirty &&
+                 form.get('password').value !== form.get('confirm').value ? 'border-danger' : ''"
+                 formControlName="confirm"
+                 type="password">
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-lg-3 col-md-6 col-sm-9 mx-auto z-index-1">
+      <button nz-button
+              nzBlock
+              [disabled]="form.invalid"
+              [nzLoading]="isLoading"
+              (click)="onSignUp()"
+              nzType="primary">
+        Sign Up
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-3 col-md-6 col-sm-9 mx-auto z-index-1 text-center">
+      <button nz-button
+              [routerLink]="['../login']"
+              nzType="link">
+        Have an account? Sign In
+      </button>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,69 @@
+<div class="container-fluid h-50">
+
+  <div class="d-flex flex-wrap">
+    <div class="flex-fill w-100 text-center">
+      <img src="assets/logo.png"
+           alt="logo"
+           [width]="256">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-2 col-md-4 col-sm-6 mx-auto d-flex flex-wrap z-index-1" [formGroup]="form">
+
+      <div class="flex-fill w-100">
+        <div class="acd-text-bold"
+             [ngClass]="form.get('email').errors && form.get('email').dirty ? 'text-danger' : ''">
+          E-mail
+        </div>
+
+        <label>
+          <input nz-input
+                 [ngClass]="form.get('email').errors && form.get('email').dirty ? 'border-danger' : ''"
+                 formControlName="email"
+                 type="email">
+        </label>
+      </div>
+
+      <div class="flex-fill w-100 mt-3">
+        <div class="acd-text-bold"
+             [ngClass]="form.get('password').errors && form.get('password').dirty ? 'text-danger' : ''">
+          Password
+        </div>
+
+        <label>
+          <input nz-input
+                 [ngClass]="form.get('password').errors && form.get('password').dirty ? 'border-danger' : ''"
+                 formControlName="password"
+                 type="password">
+        </label>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-lg-2 col-md-4 col-sm-6 mx-auto z-index-1">
+      <button nz-button
+              nzBlock
+              [disabled]="form.invalid"
+              [nzLoading]="isLoading"
+              (click)="onLogin()"
+              nzType="primary">
+        Sign In
+      </button>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-2 col-md-4 col-sm-6 mx-auto z-index-1 text-center">
+      <button nz-button
+              [routerLink]="['../register']"
+              nzType="link">
+        Don't have an account? Sign Up
+      </button>
+    </div>
+  </div>
+</div>
+
+

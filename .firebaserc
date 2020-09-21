@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "notebook-c21b9": {
+      "hosting": {
+        "ng-notebook": [
+          "notebook-c21b9"
+        ]
+      }
+    }
+  }
+}

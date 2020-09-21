@@ -1,0 +1,69 @@
+<nz-layout class="h-100">
+  <nz-header class="px-3">
+    <ul nz-menu
+        nzTheme="dark"
+        class="d-flex"
+        [nzSelectable]="false"
+        nzMode="horizontal">
+      <li nz-menu-item>
+        Ng Notebook
+      </li>
+
+      <li nz-menu-item class="ml-auto">
+        <a nz-dropdown
+           nzTrigger="click"
+           nzPlacement="bottomRight"
+           [nzDropdownMenu]="dropdown">
+          {{ user?.name?.text }}
+          <i class="fas fa-angle-down ml-2"></i>
+        </a>
+        <nz-dropdown-menu #dropdown="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item
+                nzDisabled
+                class="py-3">
+              <div class="d-flex flex-row">
+                <div class="flex-column d-flex align-items-center justify-content-center">
+                  <div class="flex-row">{{ user?.name?.text }}</div>
+                  <div class="flex-row">{{ user?.email }}</div>
+                  <div class="flex-row">{{ user?.phone }}</div>
+                </div>
+              </div>
+            </li>
+
+            <li nz-menu-divider></li>
+
+            <li nz-menu-item>Sign Out</li>
+          </ul>
+        </nz-dropdown-menu>
+      </li>
+    </ul>
+  </nz-header>
+
+  <nz-content>
+    <div class="container-fluid p-5">
+      <nz-list [nzLoading]="isLoading"
+               [nzNoResult]="noData"
+               [nzDataSource]="boards">
+        <div class="row">
+          <div class="col-lg-3" *ngFor="let b of boards">
+            <app-board [board]="b"></app-board>
+          </div>
+        </div>
+      </nz-list>
+
+      <ng-template #noData>
+        <nz-result nzStatus="info"
+                   nzTitle="There is no board">
+          <div nz-result-extra>
+            <button nz-button
+                    (click)="onAddBoard()"
+                    nzType="primary">Add New Board</button>
+          </div>
+        </nz-result>
+      </ng-template>
+    </div>
+  </nz-content>
+
+  <nz-footer class="text-center p-1">Ali Can Dirik ©2020 All rights reserved</nz-footer>
+</nz-layout>
